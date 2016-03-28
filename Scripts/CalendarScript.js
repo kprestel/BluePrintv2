@@ -18,10 +18,15 @@ function displayCalendar() {
                     right: 'month,agendaWeek,agendaDay'
                 },
                 selectable: true,
+                selectHelper: true,
+                select: function (start, end) {
+                    showPopUp(start, end);
+                },
                 editable: true,
                 droppable: true,
                 draggable: true,
                 lazyFetching: false,
+                defaultTimedEventDuration: '01:00:00',
                 forceEventDuration: true,
                 eventTextColor: 'Yellow',
                 eventBackgroundColor: 'Purple',
@@ -40,7 +45,7 @@ function displayCalendar() {
                     return event;
                 }),
                 eventRender: function (event, element) {
-                    element.attr("Topic", event.description),
+                    //element.attr("Topic", event.description),
                     element.qtip({
                         content: event.title + "<br>" + event.start.format('MM-DD h:mm') + " - " + event.end.format('MM-DD h:mm'),
                         position: { corner: { tootltip: 'bottomLeft', target: 'topRight' } },
@@ -82,13 +87,28 @@ function displayCalendar() {
                     if ($(this).data("qtip")) $(this).qtip('destroy');
                 },
                 eventDurationEditable: true, // change an events duration by dragging!
+                disableResizing: true,
                 startEditable: true,
                 eventAfterAllRender: function (view) { },
                 drop: function (date) {
                     eventDropped(date, this);
                 },
                 eventReceive: function (event) {
-                    alert("EVENT DROPPEEDD");
+                    //showDroppedEventPopUp(event);
+                    updateEvent(event);
+                },
+                eventClick: function (event) {
+                    $("#eventForm").dialog({
+                        autoOpen: false,
+                        height: 300,
+                        width: 350,
+                        modal: true,
+                    });
+
+                    $("#txtEventTitle").val(event.title);
+                    $("txtEventStartDate").val(event.start);
+                    $("txtEventEndDate").val(event.end);
+                    $("eventForm").dialog('open');
                 },
 
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -155,9 +175,8 @@ function eventDropped(date, externalEvent) {
     copiedEventObject.allDay = false;
     copiedEventObject.id = getNewID();
     copiedEventObject.title = $(externalEvent).data('title');
-    copiedEventObject.description = 'test';
+    copiedEventObject.description = "teste";
 
-    updateEvent(copiedEventObject);
     $('calendar').fullCalendar('renderEvent', copiedEventObject, true);
 
     //var dialog, form,
@@ -165,6 +184,32 @@ function eventDropped(date, externalEvent) {
     //    })
 }
 
+function showDroppedEventPopUp(event) {
+    $("#eventForm").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+    });
+
+    $("#txtEventTitle").val(event.title);
+    $("txtEventStartDate").val(event.start);
+    $("txtEventEndDate").val(event.end);
+    $("eventForm").dialog('open');
+}
+function showPopUp(start, end) {
+    $("#eventForm").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+    });
+
+    $("#eventForm #txtEventTitle").val();
+    $("#eventForm #txtEventStartDate").val(start.format('MM-DD-YYYY h:mm'));
+    $("#eventForm #txtEventEndDate").val(end.format('MM-DD-YYYY h:mm'));
+    $("#eventForm").dialog('open');
+}
 function getNewID() {
     return new Date().getTime() + Math.floor(Math.random()) * 500;
 }
