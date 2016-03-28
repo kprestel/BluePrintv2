@@ -94,21 +94,10 @@ function displayCalendar() {
                     eventDropped(date, this);
                 },
                 eventReceive: function (event) {
-                    //showDroppedEventPopUp(event);
                     updateEvent(event);
                 },
                 eventClick: function (event) {
-                    $("#eventForm").dialog({
-                        autoOpen: false,
-                        height: 300,
-                        width: 350,
-                        modal: true,
-                    });
-
-                    $("#txtEventTitle").val(event.title);
-                    $("txtEventStartDate").val(event.start);
-                    $("txtEventEndDate").val(event.end);
-                    $("eventForm").dialog('open');
+                    showEventClickedPopUp(event);
                 },
 
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -125,9 +114,8 @@ function updateEvent(event) {
     eventToSave.eventTitle = event.title;
     eventToSave.eventStartDate = event.start.format('YYYY-MM-DD h:mm:ss');
     eventToSave.eventEndDate = event.end.format('YYYY-MM-DD h:mm:ss');
-    //eventToSave.eventStartDate = event.start.toLocaleString();
-    //eventToSave.eventEndDate = event.end.toLocaleString();
     eventToSave.eventTopic = event.description;
+
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -177,11 +165,42 @@ function eventDropped(date, externalEvent) {
     copiedEventObject.title = $(externalEvent).data('title');
     copiedEventObject.description = "teste";
 
-    $('calendar').fullCalendar('renderEvent', copiedEventObject, true);
+    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+}
 
-    //var dialog, form,
-    //    dialog = $('#eventForm').dialog({
-    //    })
+function showEventClickedPopUp(event) {
+    $("#eventForm").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Add Event": function () {
+                var copiedEvent = new Object();
+                copiedEvent.id = event.id;
+                copiedEvent.title = $("#eventForm #txtEventTitle").val();
+                copiedEvent.start = moment(new Date($("#eventForm #txtEventStartDate").val()));
+                copiedEvent.end = moment(new Date($("#eventForm #txtEventEndDate").val()));
+                copiedEvent.description = $("#eventForm #txtEventDescription").val();
+                updateEvent(copiedEvent);
+                $('#calendar').fullCalendar('removeEvents', event.id);
+                $('#calendar').fullCalendar('refetchEvents');
+                $('#calendar').fullCalendar('renderEvent', copiedEvent, true);
+                $('#eventForm').dialog('close');
+            }
+        }
+    });
+
+    $("#eventForm #txtEventTitle").val();
+    $("#eventForm").find("#btnAddEvent").click(function (e) {
+        e.preventDefault();
+        updateEvent(event);
+    });
+    $("#eventForm #txtEventDescription").val(event.description);
+    $("#eventForm #txtEventTitle").val(event.title);
+    $("#eventForm #txtEventStartDate").val(event.start.format('YYYY-MM-DD h:mm:ss'));
+    $("#eventForm #txtEventEndDate").val(event.end.format('YYYY-MM-DD h:mm:ss'));
+    $("#eventForm").dialog('open');
 }
 
 function showDroppedEventPopUp(event) {
@@ -203,24 +222,35 @@ function showPopUp(start, end) {
         height: 300,
         width: 350,
         modal: true,
+        buttons: {
+            "Add Event": function () {
+                addEventFromDialog();
+            }
+        }
     });
 
     $("#eventForm #txtEventTitle").val();
+    $("#eventForm").find("#btnAddEvent").click(function () {
+        addEventFromDialog();
+    });
     $("#eventForm #txtEventStartDate").val(start.format('MM-DD-YYYY h:mm'));
-    $("#eventForm #txtEventEndDate").val(end.format('MM-DD-YYYY h:mm'));
+    $("#eventForm #txtEventEndDate").val(start.add(1, 'h').format('MM-DD-YYYY h:mm'));
     $("#eventForm").dialog('open');
 }
 function getNewID() {
-    return new Date().getTime() + Math.floor(Math.random()) * 500;
+    return new Date().getTime() + Math.floor(Math.random());
 }
 
-function addEventFromDialog(date) {
+function addEventFromDialog() {
     var eventToSave = new Object();
-    eventToSave.eventID = 55;
-    eventToSave.eventTitle = $('txtEventTitle').val();
-    eventToSave.eventStartDate = $('txtEventStartDate').val(date.format('YYYY-MM-DD h:mm:ss'));
-    eventToSave.eventEndDate = $('txtEventEndDate').val(date.format('YYYY-MM-DD h:mm:ss'));
-    eventToSave.eventTopic = 'cool stuff';
+    var event = new Object();
+    eventToSave.eventID = event.id = 16;
+    eventToSave.eventTitle = event.title = $('#txtEventTitle').val();
+    event.start = $('#txtEventStartDate').val();
+    eventToSave.eventStartDate = $('#eventForm #txtEventStartDate').val();
+    event.end = $('#txtEventEndDate').val();
+    eventToSave.eventEndDate = $('#txtEventEndDate').val();
+    eventToSave.eventTopic = event.description = $('#txtEventDescription').val();
 
     $.ajax({
         type: "POST",
@@ -228,40 +258,33 @@ function addEventFromDialog(date) {
         data: "{eventData:" + JSON.stringify(eventToSave) + "}",
         url: "CalendarService.asmx/updateEvent",
         dataType: "json",
-        success: function (data) {
-            var events = new Array();
-            $.map(data.d, function (item, i) {
-                console.log(item);
-                var eventEndDate = new Object();
-                var event = new Object();
-                event.id = item.eventID,
-                event.start = new Date(item.eventStartDate),
-                event.end = new Date(item.eventEndDate),
-                event.title = item.eventTitle,
-                event.description = item.eventTopic,
-                event.allDay = false;
-                events.push(event);
-                console.log(event);
-            });
-            $('#calendar').fullCalendar('addEventSource', events);
-            $('#eventForm').dialog('close');
+        success: function () {
+            //updateEventSource(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            debugger;
         }
     });
 }
 
-//function intCreateEvent() {
-//    $('#btnCreateEvent').bind('click', function () {
-//        var templateEvent = $('#externalEventTemplate').clone();
-//        var title = $("txtTitle").val();
-//        var description = $("txtDescription").val();
-
-//        $(templateEvent).attr('id', getUniqueID());
-//    });
-//}
-
-//function getUniqueID(){
-//    return new Date().getTime() + Math.floor(Math.random()) * 500;
-//}
+function updateEventSource(data) { // delete?
+    var events = new Array();
+    $.map(data.d, function (item, i) {
+        console.log(item);
+        var eventEndDate = new Object();
+        var event = new Object();
+        event.id = item.eventID,
+        event.start = new Date(item.eventStartDate),
+        event.end = new Date(item.eventEndDate),
+        event.title = item.eventTitle,
+        event.description = item.eventTopic,
+        event.allDay = false;
+        events.push(event);
+        console.log(event);
+    });
+    $('#calendar').fullCalendar('addEventSource', events);
+    $('#eventForm').dialog('close');
+}
 
 function onSuccess(response) {
     return response.d;
@@ -270,77 +293,3 @@ function onSuccess(response) {
 function onError(response) {
     console.log(Error);
 }
-
-//    var dialog, form,
-//dialog = $('#eventForm').dialog({
-//    autoOpen: false,
-//    height: 300,
-//    width: 350,
-//    modal: true,
-//    buttons: {
-//        "Add Event": addEventFromDialog,
-//        Cancel: function () {
-//            dialog.dialog('close');
-//        },
-//        close: function () {
-//            form[0].reset();
-//        }
-
-//    }
-
-//});
-//    form = dialog.find('form').on('submit', function (event) {
-//        addEventFromDialog(date);
-//    });
-
-//    var dialog = new Object();
-//    //$('#txtEventStartDate').val(date.format('YYYY-MM-DD h:mm:ss'));
-//    //$('#txtEventTitle').val($(this).text);
-//    dialog = $('#eventForm').dialog({
-//        autoOpen: false,
-//        title: "Add Event",
-//        width: 500,
-//        modal: true,
-//        buttons: {
-//            "Add": function () {
-//                var eventToSave = new Object();
-//                eventToSave.eventID = 55;
-//                eventToSave.eventTitle = $('txtEventTitle').val();
-//                eventToSave.eventStartDate = $('txtEventStartDate').val(date.format('YYYY-MM-DD h:mm:ss'));
-//                eventToSave.eventEndDate = $('txtEventEndDate').val(date.format('YYYY-MM-DD h:mm:ss'));
-//                eventToSave.eventTopic = 'cool stuff';
-
-//                $.ajax({
-//                    type: "POST",
-//                    contentType: "application/json",
-//                    data: "{eventData:" + JSON.stringify(eventToSave) + "}",
-//                    url: "CalendarService.asmx/updateEvent",
-//                    dataType: "json",
-//                    success: function (data) {
-//                        var events = new Array();
-//                        $.map(data.d, function (item, i) {
-//                            console.log(item);
-//                            var eventEndDate = new Object();
-//                            var event = new Object();
-//                            event.id = item.eventID,
-//                            event.start = new Date(item.eventStartDate),
-//                            event.end = new Date(item.eventEndDate),
-//                            event.title = item.eventTitle,
-//                            event.description = item.eventTopic,
-//                            event.allDay = false;
-//                            events.push(event);
-//                            console.log(event);
-//                        });
-//                        $('#calendar').fullCalendar('addEventSource', events);
-//                        $('#eventForm').dialog('close');
-
-//                    }
-//                });
-
-//            }
-
-//        }
-//        //$('#start').val(date.format('YYYY-MM-DD h:mm:ss'));
-//    });
-//    $('#calendar').fullCalendar('refetchEvents');
-//},
