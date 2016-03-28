@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Security.Authentication;
+using System.Security.Cryptography;
+
+public partial class _Default : System.Web.UI.Page
+{
+    #region Apply Button
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
+            sc.ConnectionString = @"Server=Localhost;Database=WBL;Trusted_Connection=Yes;";
+            sc.Open();
+
+            System.Data.SqlClient.SqlCommand reader = new System.Data.SqlClient.SqlCommand();
+            reader.Connection = sc;
+            reader.CommandText = "Insert into Member(FirstName, LastName) values (@firstName, @lastName)";
+            reader.Parameters.AddWithValue("@firstName", txtFName.Text);
+            reader.Parameters.AddWithValue("@lastName", txtLName.Text);
+            reader.ExecuteNonQuery();
+
+            /*  System.Data.SqlClient.SqlCommand selectTopID = new System.Data.SqlClient.SqlCommand();
+              selectTopID.Connection = sc;
+              selectTopID.CommandText = "SELECT TOP 1 MemberID FROM Member ORDER BY MemberID DESC";
+
+              int StudentID = -1;
+        
+              StudentID = selectTopID.ExecuteNonQuery() + 1;
+              */
+            int max = findMax();
+            reader.CommandText = "Insert into Student(StudentID, GradeLevel, Gender, Ethnicity, " +
+        "E_ContactName, E_ContactLName, E_ContactEmail, E_ContactRelationship, WardOfResidenceName, " +
+        "DcOneCardNo, PrimaryPhysicianName, InsuranceGroupNo, StudentStatus, SchoolName, ExpectedGradYr, " +
+        "CollegeMajor,LastSchoolAttended, GraduationYear, Discipline, " +
+        "JobName, HourlyWage, CareerGoal, DesiredHourlyPay, BioParagraph, tShirtSize) " +
+        "values (@StudentID, @GradeLevel, @Gender, @Ethnicity, @E_ContactName, @E_ContactLName, @E_ContactEmail, @E_ContactRelationship, " +
+        "@WardOfResidenceName, @DcOneCardNo, @PrimaryPhysician, @InsuranceGroupNo, @StudentStatus, @SchoolName, @ExpectedGradYr, " +
+        "@CollegeMajor, @LastSchoolAttended, @GraduationYear, @Discipline, @JobName, @HourlyWage, @CareerGoal, " +
+        "@DesiredHourlyPay, @BioParagraph, @tShirtSize)";
+            reader.Parameters.AddWithValue("StudentID", max);
+            reader.Parameters.AddWithValue("@GradeLevel", txtCurrentGrade.Text);
+            reader.Parameters.AddWithValue("@Gender", rdoGender.SelectedValue);
+            reader.Parameters.AddWithValue("@Ethnicity", CheckBox12.Text);
+            reader.Parameters.AddWithValue("@E_ContactName", txt911FName.Text);
+            reader.Parameters.AddWithValue("@E_ContactLName", txt911LName.Text);
+            reader.Parameters.AddWithValue("@E_ContactEmail", txtEmergencyEmail.Text);
+            reader.Parameters.AddWithValue("@E_ContactRelationship", txtRelationshipToStudent.Text);
+            reader.Parameters.AddWithValue("@WardOfResidenceName", ddWardOfResidence.SelectedValue);
+            reader.Parameters.AddWithValue("@DcOneCardNo", TextBox1.Text);
+            reader.Parameters.AddWithValue("@PrimaryPhysician", txtPhysician.Text);
+            reader.Parameters.AddWithValue("@InsuranceGroupNo", txtInsrancePolicyNumber.Text);
+            reader.Parameters.AddWithValue("@StudentStatus", rdoStudentStatus.SelectedValue);
+            reader.Parameters.AddWithValue("@SchoolName", txtSchool.Text);
+            reader.Parameters.AddWithValue("@ExpectedGradYr", txtGraduation.Text);
+            reader.Parameters.AddWithValue("@CollegeMajor", txtMajor.Text);
+            reader.Parameters.AddWithValue("@LastSchoolAttended", txtLastSchool.Text);
+            reader.Parameters.AddWithValue("@GraduationYear", txtGraduationYear.Text);
+            reader.Parameters.AddWithValue("@Discipline", txtWhatDidYouStudy.Text);
+            reader.Parameters.AddWithValue("@JobName", txtEmployedAt.Text);
+            reader.Parameters.AddWithValue("@HourlyWage", txtHourlyWage.Text);
+            reader.Parameters.AddWithValue("@CareerGoal", txtCareerGoal.Text);
+            reader.Parameters.AddWithValue("@DesiredHourlyPay", txtDesiredIncome.Text);
+            reader.Parameters.AddWithValue("@BioParagraph", txtBioParagraph.Text);
+            reader.Parameters.AddWithValue("@tShirtSize", rdoShirtSize.Text);
+            reader.ExecuteNonQuery();
+        }
+        catch(Exception)
+        {
+            //string or binary data would be truncated which means one data field is too big to get inputted to 
+        
+        }
+    }
+    #endregion
+    #region findMax
+    public int findMax()
+    {
+        int max = 0;
+        String id = "";
+   
+        try
+        {
+
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
+            sc.ConnectionString = @"Server=LOCALHOST;Database=WBL;Trusted_Connection=Yes;";
+
+            sc.Open();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = sc;
+            insert.CommandText = "select Max(MemberID) as Max from Member";
+            System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader["Max"].ToString();
+            }
+            max = Convert.ToInt32(id);
+            sc.Close();
+
+
+        }
+        catch (Exception)
+        {
+        }
+
+        return max;
+    }
+#endregion
+}

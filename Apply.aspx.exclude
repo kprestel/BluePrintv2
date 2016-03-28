@@ -1,0 +1,468 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Apply.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Words, Beats & Life</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <table>
+        <th><asp:Label ID="Label69" runat="server" Text="Apply"></asp:Label></th>
+        <tr>
+            <td><asp:Label ID="lblDateLastEnrollment" runat="server" Text="Date of Last WBL Enrollment"></asp:Label></td>
+            <td><asp:TextBox ID="txtDateLastEnrollment" runat="server" name="txtDateLastEnrollment"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblFName" runat="server" Text="First Name"></asp:Label></td>
+            <td><asp:TextBox ID="txtFName" runat="server" name="txtFName"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblLName" runat="server" Text="Last Name"></asp:Label></td>
+            <td><asp:TextBox ID="txtLName" runat="server" name="txtLastName"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblAcademySite" runat="server" Text="lblAcademySite"></asp:Label></td>
+            <td><asp:CheckBox ID="chkStStevens" runat="server" Text="St. Steven's Church (1525 Newton St. NW 20010)"/></td>
+            <td></td><td><asp:CheckBox ID="chkRiverside" runat="server" Text="Riverside Center (5202 Foote St. NE 20019)"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblApprenticeStudent" runat="server" Text="Are you an apprentice student?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoApprecticeList" runat="server"><asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" /><asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblClassEnrollment" runat="server" Text="Class Enrollment"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl1" runat="server" Text="Sign up for as many classes you want to take!"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl2" runat="server" Text="Everything is FREE!"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl3" runat="server" Text="Apprectice students are REQUIRED to take Hip-Hop As Theater, please select ONE date to attend"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblRequestingClasses" runat="server" Text="Classes Requesting Enrollment (St.Stephen's)"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl4" runat="server" Text="The calsses offered at St. Stephen's. IMPORTANT if you wish to participate in the Murals DC program and get paid for your work you must take the 'Fine Art' class IN ADDITION TO either 'Street Art' or 'Black Book' class"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:CheckBox ID="CheckBox1" runat="server" Text="We should do something way cooler with calendar or query to pick classes"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label1" runat="server" Text="Classes Requesting Enrollment (Riverside)"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:CheckBox ID="CheckBox2" runat="server" Text="We should do something way cooler with calendar or query to pick classes"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label2" runat="server" Text="Classes Requesting Enrollement (BARS)"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:CheckBox ID="CheckBox3" runat="server" Text="We should do something way cooler with calendar or query to pick classes"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label3" runat="server" Text="Ward of Program"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:CheckBox ID="CheckBox4" runat="server" Text="1 (St. Stephens Church)"/></td>
+      
+            <td><asp:CheckBox ID="CheckBox5" runat="server" Text="1 (MLK Memorial Library)"/></td>
+        
+            <td><asp:CheckBox ID="CheckBox6" runat="server" Text="7 (Riverside Center)"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox7" runat="server" Text="N/A (BARS)"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label4" runat="server" Text="PSA of Program"></asp:Label></td>
+      
+            <td><asp:CheckBox ID="CheckBox8" runat="server" Text="302 (St. Stephens Church)"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox9" runat="server" Text="101 (MLK Library)"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox10" runat="server" Text="608 (Riverside Center)"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox11" runat="server" Text="N/A (BARS)"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label5" runat="server" Text="2. Volunteer Requirement"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label6" runat="server" Text="WBL Academy Students (not just Apprentices) are required to attend one WBL event as a volunteer and particpate in one 'Our Block' Community Cleanup per session of enrollment. By signing below, you are confimring your acknowledgement of this policy and intent to particpate in classes this section"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label7" runat="server" Text="I acknowledge that as a Words, Beats & Life Academy Student, I am requried to attend at lease one 'Our Block' Community Cleanup and volunteer at WBL event. Failure to do so will jeopardize my ability to take classes, perform with WBL, and reap any other benefits typically offered to WBL students."></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label8" runat="server" Text="Signature"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:TextBox ID="txtSignatureBox" runat="server"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblCellPhone" runat="server" Text="Cell Phone #"></asp:Label></td>
+            <td><asp:TextBox ID="txtCellPhone" runat="server" name="txtCellPhone"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblHomePhone" runat="server" Text="Home Phone #"></asp:Label></td>
+            <td><asp:TextBox ID="txtHomePhone" runat="server" name="txtHomePhone"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblAge" runat="server" Text="Age"></asp:Label></td>
+            <td><asp:TextBox ID="txtAge" runat="server" name="txtAge"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblGender" runat="server" Text="I identify my gender as..."></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoGender" runat="server"><asp:ListItem Text="Male" Value="Male" Selected="True" name="gender" /><asp:ListItem Text="Female" Value="Female" Selected="False" name="rdoFemale"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label9" runat="server" Text="Racial and/or ethnic identity"></asp:Label></td>
+       
+            <td><asp:CheckBox ID="CheckBox12" runat="server" Text="American Indian or Alaska Native" Value="American Indian or Alaska Native"/></td>
+        
+            <td><asp:CheckBox ID="CheckBox13" runat="server" Text="Asian or Pacific Islander" Value="Asian or Pacific Islander"/></td>
+      
+            <td><asp:CheckBox ID="CheckBox14" runat="server" Text="Black or African American" Value="Black or African American"/></td>
+      
+            <td><asp:CheckBox ID="CheckBox15" runat="server" Text="White" Value="White"/></td>
+      
+            <td><asp:CheckBox ID="CheckBox16" runat="server" Text="Bi-Racial" Value="Bi-Racial"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox17" runat="server" Text="Other" Value="Other"/></td>
+        </tr>
+            <td><asp:Label ID="lblHomeAdress" runat="server" Text="Home Address"></asp:Label></td>
+            <td><asp:TextBox ID="txtHomeAddress" runat="server" name="txtHomeAddress"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblApartmentNumber" runat="server" Text="Apartment Number"></asp:Label></td>
+            <td><asp:TextBox ID="txtApartmentNumber" runat="server" name="txtApartmentNumber"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblCity" runat="server" Text="City"></asp:Label></td>
+            <td><asp:TextBox ID="txtCity" runat="server" name="txtCity"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblState" runat="server" Text="State"></asp:Label></td>
+            <td><asp:TextBox ID="txtState" runat="server" name="txtState"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblZip" runat="server" Text="Zip Code"></asp:Label></td>
+            <td><asp:TextBox ID="txtZip" runat="server" name="txtZip"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblWardOfResidence" runat="server" Text="Ward of Residence"></asp:Label></td>
+            <td><asp:DropDownList ID="ddWardOfResidence" runat="server">
+                <asp:ListItem Text="We need the options"></asp:ListItem>
+            </asp:DropDownList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblOneCard" runat="server" Text="DC One Card #"></asp:Label></td>
+            <td><asp:Label ID="Label10" runat="server" Text="If you do not have one, write 'none'"></asp:Label></td>
+            <td><asp:TextBox ID="TextBox1" runat="server" name="txtZip"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label11" runat="server" Text="Parent/Guardian or Emergency Contact Information"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl911FName" runat="server" Text="911 Contact First Name"></asp:Label></td>
+            <td><asp:TextBox ID="txt911FName" runat="server" name="txt911FName"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lbl911LName" runat="server" Text="Last Name"></asp:Label></td>
+            <td><asp:TextBox ID="txt911LName" runat="server" name="txt911LName"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblRelationshipToStudent" runat="server" Text="Relationship to Student"></asp:Label></td>
+            <td><asp:TextBox ID="txtRelationshipToStudent" runat="server" name="txtRelationshipToStudent"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblEmergencyCellPhone" runat="server" Text="Cell Phone #"></asp:Label></td>
+            <td><asp:TextBox ID="txtEmergencyCellPhone" runat="server" name="txtEmergencyCellPhone"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblEmergencyEmail" runat="server" Text="E-mail address"></asp:Label></td>
+            <td><asp:TextBox ID="txtEmergencyEmail" runat="server" name="txtEmergencyEmail"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="lblHealthInformation" runat="server" Text="Health Information"></asp:Label></td>
+            <td><asp:Label ID="lblPhysician" runat="server" Text="Primary Physician and/or Medical Treatment Facility"></asp:Label></td>
+            <td><asp:Label ID="Label12" runat="server" Text="If none just write 'none'"></asp:Label></td>
+            <td><asp:TextBox ID="txtPhysician" runat="server" name="txtPhysician"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label15" runat="server" Text="Insurance Company"></asp:Label></td>
+            <td><asp:TextBox ID="txtInsuranceCo" runat="server" name="txtInsuranceCo"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label13" runat="server" Text="Insurance Group Number"></asp:Label></td>
+            <td><asp:Label ID="Label14" runat="server" Text="(If any)"></asp:Label></td>
+            <td><asp:TextBox ID="txtInsuranceGroupNumber" runat="server" name="txtInsuranceGroupNumber"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label16" runat="server" Text="Insurance Policy Number"></asp:Label></td>
+            <td><asp:Label ID="Label17" runat="server" Text="(If any)"></asp:Label></td>
+            <td><asp:TextBox ID="txtInsrancePolicyNumber" runat="server" name="txtInsurancePolicyNumber"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label18" runat="server" Text="Dietary Information Rescritions"></asp:Label></td>
+            <td><asp:TextBox ID="txtDietaryRestrictions" runat="server" name="txtDietaryRescritions"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label19" runat="server" Text="Allergies"></asp:Label></td>
+            <td><asp:Label ID="Label20" runat="server" Text="If none, please write 'none'"></asp:Label></td>
+            <td><asp:TextBox ID="txtAllergies" runat="server" name="txtAllergies"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label21" runat="server" Text="Education"></asp:Label></td>
+            <td><asp:Label ID="Label22" runat="server" Text="StudentStatus"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoStudentStatus" runat="server"><asp:ListItem Text="Not In School" Value="Not In School" Selected="True" name="rdoNotInSchool" /><asp:ListItem Text="Attending School" Value="Attending School" Selected="False" name="rdoAttendingSchool"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label23" runat="server" Text="Current Grade/Year in School"></asp:Label></td>
+            <td><asp:TextBox ID="txtCurrentGrade" runat="server" name="txtCurrentGrade"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label24" runat="server" Text="School and/or program name"></asp:Label></td>
+            <td><asp:TextBox ID="txtSchool" runat="server" name="txtSchool"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label25" runat="server" Text="Expected Year of Graduation"></asp:Label></td>
+            <td><asp:Label ID="Label26" runat="server" Text="8th Grade, High School, or College Graduation"></asp:Label></td>
+            <td><asp:TextBox ID="txtGraduation" runat="server" name="txtGraduation"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label27" runat="server" Text="Do you plan on going to college or a trade school?"></asp:Label></td>
+            <td><asp:DropDownList ID="ddCollege" runat="server">
+                <asp:ListItem Text="Yes"></asp:ListItem>
+                <asp:ListItem Text="No"></asp:ListItem>
+            </asp:DropDownList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label28" runat="server" Text="What would you like to major in?"></asp:Label></td>
+            <td><asp:TextBox ID="txtMajor" runat="server" name="txtMajor"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label29" runat="server" Text="What college/trade school would you want to go to?"></asp:Label></td>
+            <td><asp:TextBox ID="txtCollege" runat="server" name="txtCollege"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label30" runat="server" Text="Past Education Information"></asp:Label></td>
+            <td><asp:Label ID="Label31" runat="server" Text="Name of last school attended"></asp:Label></td>
+            <td><asp:TextBox ID="txtLastSchool" runat="server" name="txtLastSchool"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label32" runat="server" Text="Year of Graduation"></asp:Label></td>
+            <td><asp:TextBox ID="txtGraduationYear" runat="server" name="txtGraduationYear"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label33" runat="server" Text="What did you study?"></asp:Label></td>
+            <td><asp:TextBox ID="txtWhatDidYouStudy" runat="server" name="txtWhatDidYouStudy"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label34" runat="server" Text="Do you plan on furthering your education?"></asp:Label></td>
+            <td><asp:Label ID="Label35" runat="server" Text="I.E. College, Grad School, Trade School, Certificate Program, etc."></asp:Label></td>
+            <td><asp:DropDownList ID="ddFurtheringEducation" runat="server">
+                <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="No"></asp:ListItem>
+            </asp:DropDownList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label36" runat="server" Text="Employment History"></asp:Label></td>
+            <td><asp:Label ID="Label37" runat="server" Text="Do you currently have a job?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoEmployed" runat="server"><asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" /><asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label38" runat="server" Text="If yes, where do you work? What do you do?"></asp:Label></td>
+            <td><asp:TextBox ID="txtEmployedAt" runat="server" name="txtEmployedAt"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label39" runat="server" Text="How much money do you make per hour?"></asp:Label></td>
+            <td><asp:TextBox ID="txtHourlyWage" runat="server" name="txtHourlyWage"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label40" runat="server" Text="Do you have a career goal? If yes, what is it?"></asp:Label></td>
+            <td><asp:TextBox ID="txtCareerGoal" runat="server" name="txtCareerGoal"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label41" runat="server" Text="How much money do you want to make per hour?"></asp:Label></td>
+            <td><asp:TextBox ID="txtDesiredIncome" runat="server" name="txtDesiredIncome"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label43" runat="server" Text="Do you currently have a resume?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoResume" runat="server"><asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" /><asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/><asp:ListItem Text="What's a resume?" Value="What's a resume?" Selected="False" name="rdoNo"/></asp:RadioButtonList>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label44" runat="server" Text="Do you have an artisitic resume?"></asp:Label></td>
+            <td><asp:Label ID="Label45" runat="server" Text="Do you currently have a job?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoArtisticResume" runat="server"><asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" /><asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/><asp:ListItem Text="What's an artisitc resume?" Value="What's an artistic resume?" Selected="False" name="rdoNo"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label42" runat="server" Text="Which of the following workshops would you like to participate in?"></asp:Label></td>
+        </tr>
+         <tr>
+            <td><asp:Label ID="Label46" runat="server" Text="Check ALL that apply. If none, check none"></asp:Label></td>
+      
+            <td><asp:CheckBox ID="CheckBox18" runat="server" Text="Preparing for College" Value="Preparing for College"/></td>
+      
+            <td><asp:CheckBox ID="CheckBox19" runat="server" Text="Interviewing Skills" Value="Interviewing Skills"/></td>
+        
+            <td><asp:CheckBox ID="CheckBox20" runat="server" Text="Resume Development" Value="Resume Development"/></td>
+        
+            <td><asp:CheckBox ID="CheckBox21" runat="server" Text="Intellectual Property" Value="Intellectual Property"/></td>
+       
+            <td><asp:CheckBox ID="CheckBox22" runat="server" Text="Portfolio Building" Value="Portfolio Building"/></td>
+     
+            <td><asp:CheckBox ID="CheckBox23" runat="server" Text="None" Value="None"/></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label56" runat="server" Text="Skill Mastery"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label57" runat="server" Text="Skill Level"></asp:Label></td>
+        </tr>
+        <tr>
+         <td><asp:Label ID="Label58" runat="server" Text="Please Check your experience or interest level in each element"></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label59" runat="server" Text="DJ'ing"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoDJing" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label60" runat="server" Text="Graffiti"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoGraffiti" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label61" runat="server" Text="MC'ing/Rapping"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoMCing" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label62" runat="server" Text="Poetry/Spoken Word"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoPoetry" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label63" runat="server" Text="Murals/Public Art"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoMurals" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label64" runat="server" Text="Breakdancing"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoBreakDancing" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>    
+        <tr>
+            <td><asp:Label ID="Label65" runat="server" Text="Music production"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoMusicProduction" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label66" runat="server" Text="Chess"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoChess" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+         </tr>
+        <tr>
+            <td><asp:Label ID="Label67" runat="server" Text="Photography"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoPhotography" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label68" runat="server" Text="Hip-Hop Dance"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoHipHopDance" runat="server">
+                        <asp:ListItem Text="No Experience" Value="No Experience" Selected="False" name="rdoNoExperience" />
+                        <asp:ListItem Text="Beginner" Value="Beginner" Selected="False" name="rdoBeginner"/>
+                        <asp:ListItem Text="Intermediate" Value="Intermediate" Selected="False" name="rdoIntermediate"/>
+                        <asp:ListItem Text="Advanced" Value="Advanced" Selected="False" name="rdoAdvanced"/>
+                        <asp:ListItem Text="Interested in Learning" Value="Interested in learning" Selected="False" name="rdoInterestedInLearning"/>
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label47" runat="server" Text="Have you taken any classes with Words, Beats & Life in the past?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoPastClasses" runat="server"><asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" /><asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/></asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label48" runat="server" Text="If so, which classes? and when?"></asp:Label></td>
+            <td><asp:TextBox ID="txtPastClasses" runat="server" name="txtPastClasses"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label49" runat="server" Text="What is your T-shirt size?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="rdoShirtSize" runat="server">
+                    <asp:ListItem Text="Small" Value="Small" Selected="True" name="rdoSmall" />
+                    <asp:ListItem Text="Medium" Value="Medium" Selected="False" name="rdoMedium"/>
+                    <asp:ListItem Text="Large" Value="Large" Selected="False" name="rdoSmall" />
+                    <asp:ListItem Text="XL" Value="XL" Selected="False" name="rdoSmall" />
+                    <asp:ListItem Text="XXL" Value="XXL" Selected="False" name="rdoSmall" />
+                </asp:RadioButtonList></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label50" runat="server" Text="Student Bio"></asp:Label></td>
+            <td><asp:Label ID="Label51" runat="server" Text="Please respond to the following questions in your bio:"></asp:Label></td>
+            <td><asp:Label ID="Label52" runat="server" Text="1. First Name, Last Initial 2. Elements of Hip-Hop (Classes) you practice or will practice 3. How do you hope the WBL Acadmey will help you pursue your dreams 4. Hobbies and interests"></asp:Label></td>
+            <td><asp:Label ID="Label53" runat="server" Text="Please wirte a short paragragh about yourself (5 sentences)"></asp:Label></td>
+            <td><asp:Label ID="Label54" runat="server" Text="Pplease write in the 3rd person (EX: 'Jamie went to...' 'In their spare time, Jesse likes to..'"></asp:Label></td>
+            <td><asp:TextBox ID="txtBioParagraph" runat="server" name="txtBioParagraph"></asp:TextBox></td>
+        </tr>  
+        <tr>
+            <td><asp:Label ID="Label55" runat="server" Text="Are you 18 years of age or older?"></asp:Label></td>
+            <td><asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                    <asp:ListItem Text="Yes" Value="Yes" Selected="True" name="rdoYes" />
+                    <asp:ListItem Text="No" Value="No" Selected="False" name="rdoNo"/>
+                </asp:RadioButtonList></td>
+        </tr>  
+    </table>
+    </div>
+        <asp:Button ID="Button1" runat="server" Text="Apply" OnClick="Button1_Click" />
+    </form>
+</body>
+</html>

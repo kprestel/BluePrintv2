@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/NestedMasterPages/WBLCommonMasterPage.master" AutoEventWireup="true" CodeFile="WBLStudentMasterPage.master.cs" Inherits="NestedMasterPages_WBLStudentMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"> 
+     <asp:ContentPlaceHolder ID="head" runat="server">
+         
+     </asp:ContentPlaceHolder>
+ </asp:Content> 
+ <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server"> 
+    <p>Hello, from Student Master Page!</p>
+     <div id="navContent"> 
+             <asp:HyperLink ID="lnkStudentProfile" runat="server" 
+             NavigateUrl="~/WebPages/Student_WebPages/WBLStudentProfile.aspx" 
+             Text="Student Profile" />
+             <asp:HyperLink ID="lnkStudentCourses" runat="server" 
+             NavigateUrl="~/WebPages/Student_WebPages/WBLStudentCourses.aspx" 
+             Text="Courses" /> 
+             <asp:HyperLink ID="lnkStudentPortfolio" runat="server" 
+             NavigateUrl="~/WebPages/Student_WebPages/WBLStudentPortfolio.aspx" 
+             Text="Portfolio" />
+            <asp:HyperLink ID="lnkStudentBucks" runat="server" 
+             NavigateUrl="~/WebPages/Student_WebPages/WBLStudentBucks.aspx" 
+             Text="Bucks" />
+             <asp:HyperLink ID="lnkStudentEvaluations" runat="server" 
+                 NavigateUrl="~/WebPages/Student_WebPages/WBLStudentEvaluations.aspx" 
+                 Text="Evaluations" />
+        </div>
+     <asp:ContentPlaceHolder ID="MainContent" runat="server"> 
+     </asp:ContentPlaceHolder>
+ </asp:Content>
+

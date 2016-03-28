@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="Content/fullcalendar.css" />
+    <link rel="stylesheet" href="Scripts/qTip/jquery.qtip.css" />
+    <script src="Scripts/jquery-2.2.1.js" type="text/javascript"></script>
+    <script src="Scripts/moment.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.11.4.js" type="text/javascript"></script>
+    <script src="Scripts/fullcalendar.js" type="text/javascript"></script>
+    <script src="Scripts/qTip/jquery.qtip.js" type="text/javascript"></script>
+    <script src="Scripts/calendarScript.js" type="text/javascript"></script>
+
+    <title></title>
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $('#calendar').fullCalendar({
+        //        header: {
+        //            left: 'prev,next today',
+        //            center: 'title',
+        //            right: 'month,agendaWeek,agendaDay'
+        //        },
+        //        selectable: true,
+        //        editable: true,
+        //        droppable: true,
+        //        draggable: true,
+        //        lazyFetching: false,
+        //        forceEventDuration: true,
+        //        eventTextColor: 'Yellow',
+        //        eventBackgroundColor: 'Purple',
+        //        events: "CalendarService.asmx/getEventList"
+        //        });
+        //});
+    </script>
+    <style>
+        body {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        }
+
+        #wrap {
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        #external-events {
+            float: left;
+            width: 150px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            background: #eee;
+            text-align: left;
+        }
+
+            #external-events h4 {
+                font-size: 16px;
+                margin-top: 0;
+                padding-top: 1em;
+            }
+
+            #external-events .fc-event {
+                margin: 10px 0;
+                cursor: pointer;
+            }
+
+            #external-events p {
+                margin: 1.5em 0;
+                font-size: 11px;
+                color: #666;
+            }
+
+                #external-events p input {
+                    margin: 0;
+                    vertical-align: middle;
+                }
+
+        #calendar {
+            float: right;
+            width: 900px;
+        }
+    </style>
+
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="wrap">
+        <div id="external-events">
+            <h3>Create Events</h3>
+            <div class="fc-event">MC</div>
+            <div class="fc-event">B-Boy</div>
+            <div class="fc-event">DJ</div>
+            <div class="fc-event">Graffiti</div>
+        </div>
+
+        <div id="calendar"></div>
+        <div style='clear:both'></div>
+
+        <!--
+            <div id="eventWrapper">
+            <input id="txtTitle" type="text" value="Title" /> <br />
+            <textarea id="txtDescription">Event Description</textarea> <br />
+            <input type="button" id="btnUpdateEvent" value="Update Event" class="btn" />
+            <input type="button" id="btnCreateEvent" value="Create Event" class="btn" />
+        </div>
+
+        -->
+    </div>
+
+    <div id="eventForm" title="Add New Event" display none;>
+        <form>
+            <fieldset>
+                <label for="txtEventTitle">Event Title</label>
+                <input type="text" id="txtEventTitle" class="text-center ui-widget-content ui-corner-all" />
+                <label for="txtEventStartDate">Event Start Date</label>
+                <input type="text" id="txtEventStartDate" class="text-center ui-widget-content ui-corner-all" />
+                <label for="txtEventEndDate">Event End Date</label>
+                <input type="text" id="txtEventEndDate" class="text-center ui-widget-content ui-corner-all" />
+                <input type="submit" tabindex="-1" style="position:absolute; top:-10000px" />
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

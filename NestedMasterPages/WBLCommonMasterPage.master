@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WBLCommonMasterPage.master.cs" Inherits="NestedMasterPages_WBLCommonMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Common Master Page</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+        <meta name="description" content="Welcome to the Words, Beats, and Life System." />
+    </asp:ContentPlaceHolder>
+</head>
+
+
+<body>
+    <form id="form1" runat="server">
+        <div id="topContent"> 
+                <asp:HyperLink ID="lnkHome" runat="server" 
+                NavigateUrl="~/NestedMasterPages/Default.aspx"
+                Text="Nested Master Pages Tutorial (Simple)" /> 
+        </div>
+        
+        <div id="mainContent"> 
+            <asp:ContentPlaceHolder id="MainContent" runat="server"> 
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

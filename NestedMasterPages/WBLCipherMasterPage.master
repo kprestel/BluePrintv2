@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/NestedMasterPages/WBLCommonMasterPage.master" AutoEventWireup="true" CodeFile="WBLCipherMasterPage.master.cs" Inherits="NestedMasterPages_WBLCipherMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+     </asp:ContentPlaceHolder> 
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <p>Hello, from Teacher Master Page!</p>
+     <div id="navContent"> 
+             <asp:HyperLink ID="lnkCipherProfile" runat="server" 
+             NavigateUrl="~/WebPages/Cipher_WebPages/WBLCipherProfile.aspx" 
+             Text="Cipher Profile" />
+
+             <asp:HyperLink ID="lnkCipherDonations" runat="server" 
+                 NavigateUrl="~/WebPages/Cipher_WebPages/WBLCipherDonations.aspx" 
+                 Text="Donations" />
+
+            <asp:HyperLink ID="lnkCipherReports" runat="server" 
+                 NavigateUrl="~/WebPages/Cipher_WebPages/WBLCipherReports.aspx" 
+                 Text="Reports" />
+            
+        </div>
+
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+     </asp:ContentPlaceHolder>
+</asp:Content>
+
